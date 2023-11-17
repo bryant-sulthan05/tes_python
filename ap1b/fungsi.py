@@ -8,7 +8,7 @@ keterangan = ['']*len(nama)
 def absen(keterangan):
     for i in range(len(nama)):
         print(f"\nNama: {nama[i]}\nNPM: {npm[i]}")
-        keterangan_input = input("Masukkan keterangan: ")
+        keterangan_input = input("Masukkan keterangan (sakit/izin/hadir/tanpa keterangan): ")
         if keterangan_input == '':
             keterangan[i] = 'tanpa keterangan'
         else:
