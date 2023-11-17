@@ -9,15 +9,21 @@ def absen(keterangan):
     for i in range(len(nama)):
         print(f"\nNama: {nama[i]}\nNPM: {npm[i]}")
         keterangan_input = input("Masukkan keterangan: ")
-        keterangan[i] = keterangan_input
+        if keterangan_input == '':
+            keterangan[i] = 'tanpa keterangan'
+        else:
+            keterangan[i] = keterangan_input
     return
 
 def cari_dan_tampilkan_data(query):
     for i in range(len(nama)):
         kata_kata_nama = nama[i].lower().split()
         if query.lower() in kata_kata_nama or query.lower() in npm[i].lower():
-            print(f"Nama: {nama[i]} \nNPM: {npm[i]}")
-            print(f"Keterangan: {keterangan[i]}")
+            print(f"\nNama: {nama[i]} \nNPM: {npm[i]}")
+            if keterangan[i] == '':
+                print(f"Keterangan: ---")
+            else:
+                print(f"Keterangan: {keterangan[i]}")
             keterangan_input = input("Masukkan keterangan baru: ")
             keterangan[i] = keterangan_input
             return
@@ -61,7 +67,7 @@ while True:
     if opsi == 'selesai':
         break
     elif opsi == 'cari':
-        query = input("Masukkan nama atau npm yang ingin dicari: ")
+        query = input("\nMasukkan nama atau npm yang ingin dicari: ")
         cari_dan_tampilkan_data(query)
     elif opsi == 'daftar absen':
         tampilkan_semua_data()
