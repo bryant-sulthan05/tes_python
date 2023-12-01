@@ -1,6 +1,5 @@
 import os
 
-# Data awal
 nama = ['Bryant Sulthan Nugroho', 'Muhammad Yusuf Ghazali', 'Raihanadri Putra Sarel', 'Farrel Amri Bustomi']
 npm = ['50423286', '51423033', '51423212', '50423464']
 keterangan = ['']*len(nama)
@@ -24,8 +23,10 @@ def cari_dan_tampilkan_data(query):
                 print(f"Keterangan: ---")
             else:
                 print(f"Keterangan: {keterangan[i]}")
-            keterangan_input = input("Masukkan keterangan baru: ")
-            keterangan[i] = keterangan_input
+            ganti_keterangan = input("Ubah keterangan? ")
+            if ganti_keterangan == 'ya':
+                keterangan_input = input("Masukkan keterangan baru: ")
+                keterangan[i] = keterangan_input
             return
     print("Nama tidak ditemukan")
 
@@ -37,8 +38,7 @@ def tampilkan_data_berdasarkan_keterangan(ket):
             jumlah_nama += 1
     return jumlah_nama
 
-# Fungsi untuk menampilkan semua data
-def tampilkan_semua_data():
+def daftar_absen():
     jumlah_hadir = 0
     jumlah_sakit = 0
     jumlah_izin = 0
@@ -62,7 +62,7 @@ def tampilkan_semua_data():
     print("Jumlah mahasiswa yang tanpa keterangan:", jumlah_alpa)
 
 while True:
-    opsi = input("\nMasukkan opsi (absen/cari/daftar absen/selesai): ").lower()
+    opsi = input("\nMasukkan opsi (absen/cari/daftar absen/sakit/izin/hadir/tanpa keterangan/selesai): ").lower()
 
     if opsi == 'selesai':
         break
@@ -70,7 +70,7 @@ while True:
         query = input("\nMasukkan nama atau npm yang ingin dicari: ")
         cari_dan_tampilkan_data(query)
     elif opsi == 'daftar absen':
-        tampilkan_semua_data()
+        daftar_absen()
     elif opsi == 'sakit' or opsi == 'izin' or opsi == 'hadir' or opsi == 'tanpa keterangan':
         jumlah_nama = tampilkan_data_berdasarkan_keterangan(opsi)
         print(f"\nJumlah nama dengan keterangan '{opsi}': {jumlah_nama}")
